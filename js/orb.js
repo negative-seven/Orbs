@@ -16,27 +16,27 @@ class Orb {
 				other.position.x - this.position.x,
 				other.position.y - this.position.y,
 			)
-			force = force.multiply(1/16)
+			force = force.multiply(10)
 			
 			let distance = this.position.subtract(other.position).magnitude()
-			if (distance < 0.01)
+			if (distance < 1)
 			{
-				distance = 0.01
+				distance = 1
 			}
-			force = force.multiply(1 / Math.pow(distance, 1))
+			force = force.multiply(1 / Math.pow(distance, 2))
 
 			let hueDistance = Math.min(
 				((this.hue - other.hue) % 1 + 1) % 1,
 				((other.hue - this.hue) % 1 + 1) % 1,
 			)
-			force = force.multiply(Math.pow(1 - hueDistance * 2, 100))
+			force = force.multiply(Math.pow(1 - hueDistance * 4, 31))
 
 			this.velocity = this.velocity.add(force)
 		}
 
 		this.velocity = this.velocity.multiply(Orb.FRICTION)
 
-		this.hue = ((this.hue + this.velocity.magnitude() / 200) % 1 + 1) % 1
+		this.hue = ((this.hue + this.velocity.magnitude() / 100) % 1 + 1) % 1
 	}
 
 	applySpeed() {
