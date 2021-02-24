@@ -35,12 +35,11 @@ class Orb {
 		}
 
 		this.velocity = this.velocity.multiply(Orb.FRICTION)
-
-		this.hue = ((this.hue + this.velocity.magnitude() / 100) % 1 + 1) % 1
 	}
 
-	applySpeed() {
+	applySpeedAndHueChange() {
 		this.position = this.position.add(this.velocity)
+		this.hue = ((this.hue + this.velocity.magnitude() / 100) % 1 + 1) % 1
 
 		if (this.position.x < 0) {
 			this.position.x = 0

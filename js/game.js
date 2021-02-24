@@ -29,7 +29,7 @@ class Game {
 		}
 
 		for (let orb of this.orbs) {
-			orb.applySpeed();
+			orb.applySpeedAndHueChange();
 		}
 
 		this.draw()
