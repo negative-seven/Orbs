@@ -12,10 +12,7 @@ class Orb {
 
 	runTick() {
 		for (let other of this.game.orbs) {
-			let force = new Vector(
-				other.position.x - this.position.x,
-				other.position.y - this.position.y,
-			)
+			let force = other.position.subtract(this.position) // normalized later
 			force = force.multiply(10)
 			
 			let distance = this.position.subtract(other.position).magnitude()
